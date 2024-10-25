@@ -1,0 +1,29 @@
+import numpy as np
+from scipy.signal import convolve2d
+
+def simple_2d_convolution(input_array, conv_mask):
+    """
+    Perform 2D convolution on an input array using a convolution mask.
+    Parameters:
+    input_array (np.array): The 2D input array.
+    conv_mask (np.array): The convolution mask.
+    Returns:
+    np.array: The convolution result.
+    """
+    return convolve2d(input_array, conv_mask, mode='full')
+
+# Example input array and convolution mask
+input_array = np.array([[1, 2, 3],
+                         [4, 5, 6],
+                         [7, 8, 9]])
+
+conv_mask = np.array([[1, 0],
+                      [0, -1]])  # Simple edge detection filter
+
+# Perform convolution
+result = simple_2d_convolution(input_array, conv_mask)
+
+# Print the result
+print("Input Array:\n", input_array)
+print("Convolution Mask:\n", conv_mask)
+print("Convolution Result:\n", result)
